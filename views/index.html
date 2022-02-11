@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 
+<script>
+    function get_data(country) 
+    { 
+        fetch("/weather/country?c=Glasgow")
+        .then(response => response.json())
+        .then((data) => 
+        {
+            document.body.append(data)
+        })
+
+    }
+
+    get_data()
+</script>
 
 
 </html>

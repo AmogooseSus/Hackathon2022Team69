@@ -16,24 +16,13 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(csrfMiddleware);
 
-app.use("/weather",require("./weather"))
+app.use("/data",require("./weather"))
 
 app.all("*", (req, res, next) => {
   res.cookie("XSRF-TOKEN", req.csrfToken());
   next();
 });
 
-app.get("/login", function (req, res) {
-  res.render("login.html");
-});
-
-app.get("/signup", function (req, res) {
-  res.render("signup.html");
-});
-
-app.get("/profile", function (req, res) {
-  res.render("profile.html");
-});
 
 app.get("/", function (req, res) {
   res.render("index.html");

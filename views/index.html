@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 
 <script>
-    function get_data(country) 
+    function get_weather(country) 
     { 
-        fetch("/weather/country?c=Glasgow")
+        fetch("/data/weather?c=Glasgow")
         .then(response => response.json())
         .then((data) => 
         {
-            document.body.append(data)
-        })
+            document.body.append(data) 
 
+        })
     }
 
-    get_data()
+    function get_headlines(country) 
+    {
+        fetch("/data/headlines?c=us")
+        .then(response => response.json())
+        .then((data) => 
+        {
+            document.body.append(data) 
+        })
+    } 
+
+    function get_friends() 
+    {
+        return null
+    }
+
+    get_weather()
+    get_headlines()
 </script>
 
 

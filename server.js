@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(csrfMiddleware);
 
-app.use("/data",require("./weather"))
+app.use("/data",require("./APIs"))
 
 app.all("*", (req, res, next) => {
   res.cookie("XSRF-TOKEN", req.csrfToken());
@@ -31,4 +31,3 @@ app.get("/", function (req, res) {
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT}`);
 });
-

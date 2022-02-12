@@ -16,6 +16,13 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(csrfMiddleware);
 
+//////////////////
+var path = require('path');
+test = path.join(__dirname, "/weather_data_template.html")
+console.log( test )
+app.use(express.static(test))
+//////////////////
+
 app.use("/data",require("./APIs"))
 
 app.all("*", (req, res, next) => {

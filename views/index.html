@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 
+<style>
+    * { font-family: sans-serif; } 
+</style>
+
 <script>
-    function get_weather(country) 
+    window.addEventListener("load", temp);
+    function temp()
+    {
+        console.log("qwerty")
+        var ifram = document.createElement("iframe")
+        ifram.setAttribute("src", "/static/weather_data_template.html")
+        document.body.append(ifram)
+    }
+
+    function get_weather(country)
     { 
         fetch("/data/weather?c=Glasgow")
         .then(response => response.json())
         .then((data) => 
         {
-            document.body.append(data) 
-
+            //note to harry: uncomment this sometime
+            //document.body.append( JSON.stringify(data) )
         })
     }
 
@@ -18,7 +31,8 @@
         .then(response => response.json())
         .then((data) => 
         {
-            document.body.append(data) 
+            //note to harry: also this
+            //document.body.append( JSON.stringify(data) ) 
         })
     } 
 

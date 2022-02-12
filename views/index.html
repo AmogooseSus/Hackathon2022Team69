@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 
-<style>
-    * { font-family: sans-serif; } 
-</style>
-
 <script>
-    window.addEventListener("load", temp);
-    function temp()
+    window.addEventListener("load", function()
     {
-        console.log("qwerty")
-        var ifram = document.createElement("iframe")
-        ifram.setAttribute("src", "/static/weather_data_template.html")
-        document.body.append(ifram)
-    }
+        display_weather_data(get_weather(), document.body)
+    });
 
-    function get_weather(country)
+    function get_weather(country="Glasgow")
     { 
-        fetch("/data/weather?c=Glasgow")
+        fetch(`/data/weather?c=${country}`)
         .then(response => response.json())
         .then((data) => 
         {
-            //note to harry: uncomment this sometime
-            //document.body.append( JSON.stringify(data) )
+            return data
         })
     }
 
-    function get_headlines(country) 
+    function display_weather_data(weather_data, parent_item)
+    {   
+        console.log("random debug string")
+        let ifram = parent_item.ownerDocument.createElement("iframe")
+        ifram.setAttribute("src", "weather_data_template.html")
+        parent_item.append(ifram)
+        
+        //TODO: make this onload event work so the populate function is called *after* the scripts are all declared
+        ifram.contentWindow.addEventListener("onload", function () { ifram.contentWindow.populate(weather_data) })
+    }
+    
+    function get_headlines(country="us") 
     {
-        fetch("/data/headlines?c=us")
+        fetch(`/data/headlines?c=${country}`)
         .then(response => response.json())
         .then((data) => 
-        {
-            //note to harry: also this
-            //document.body.append( JSON.stringify(data) ) 
-        })
+        { return data })
     } 
 
+    //TODO: make this work like the display_weather_data (once display_weather_data is fixed)
+    function display_headline_data(headline_data)
+    { document.body.append( JSON.stringify(headline_data) ) }
+
+    //TODO: get a friend so this function is no longer null ☹
     function get_friends() 
     {
         return null
     }
-
-    get_weather()
-    get_headlines()
 </script>
 
 

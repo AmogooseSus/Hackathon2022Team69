@@ -1,17 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch")
+
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('a86177dcb8ff4b6d90cbb1f7defdad70');
 
-let api_key = "5a1900c39d7e4c3fb71192249221102"
+let weather_api_key = "5a1900c39d7e4c3fb71192249221102"
 
 
 router.get("/weather",async (req,res) => 
 {
     try {
         let city = req.query.c
-        let current_weather = `http://api.weatherapi.com/v1/current.json?key=${api_key}&q=${city}`
+        let current_weather = `http://api.weatherapi.com/v1/current.json?key=${weather_api_key}&q=${city}`
         let data = await fetch(current_weather)
         let json = await data.json()
         console.log(json)

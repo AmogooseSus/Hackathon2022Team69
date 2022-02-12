@@ -16,12 +16,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(csrfMiddleware);
 
-//////////////////
-var path = require('path');
-test = path.join(__dirname, "/weather_data_template.html")
-console.log( test )
-app.use(express.static(test))
-//////////////////
+//this thing was added by me (aka myself) so it correctly exports stuff in exports folder
+app.use(express.static(__dirname + "\\exports"))
 
 app.use("/data",require("./APIs"))
 

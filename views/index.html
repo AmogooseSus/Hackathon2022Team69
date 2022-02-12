@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 
 <script>
-    window.addEventListener("load", function()
-    {
-        display_weather_data(get_weather(), document.body)
-    });
+    window.addEventListener("load", async function()
+    { display_weather_data(await get_weather(), document.body) });
 
-    function get_weather(country="Glasgow")
-    { 
-        fetch(`/data/weather?c=${country}`)
-        .then(response => response.json())
-        .then((data) => 
-        {
-            return data
-        })
+    async function get_weather(country="Glasgow")
+    {
+        let response = await fetch(`/data/weather?c=${country}`)
+        response = await response.json()
+        return response
     }
 
-    function display_weather_data(weather_data, parent_item)
+    async function get_headlines(country="us") 
+    {
+        let response = await fetch(`/data/headlines?c=${country}`)
+        response = await response.json()
+        return response
+    } 
+
+
+    async function display_weather_data(weather_data, parent_item)
     {   
-        console.log("random debug string")
         let ifram = parent_item.ownerDocument.createElement("iframe")
         ifram.setAttribute("src", "weather_data_template.html")
         parent_item.append(ifram)
         
-        //TODO: make this onload event work so the populate function is called *after* the scripts are all declared
-        ifram.contentWindow.addEventListener("onload", function () { ifram.contentWindow.populate(weather_data) })
+        //TODO: make this work with the onload event instead so an arbitrary wait time is no longer needed
+        setTimeout(() => { ifram.contentWindow.populate(weather_data) }, 100)
     }
     
-    function get_headlines(country="us") 
-    {
-        fetch(`/data/headlines?c=${country}`)
-        .then(response => response.json())
-        .then((data) => 
-        { return data })
-    } 
-
     //TODO: make this work like the display_weather_data (once display_weather_data is fixed)
     function display_headline_data(headline_data)
-    { document.body.append( JSON.stringify(headline_data) ) }
+    {   
+        let ifram = parent_item.ownerDocument.createElement("iframe")
+        ifram.setAttribute("src", "headline_data_template.html")
+        parent_item.append(ifram)
+        
+        //TODO: make this work with the onload event instead so an arbitrary wait time is no longer needed
+        setTimeout(() => { ifram.contentWindow.populate(weather_data) }, 100)
+    }
 
     //TODO: get a friend so this function is no longer null ☹
     function get_friends() 
@@ -45,6 +46,5 @@
         return null
     }
 </script>
-
 
 </html>

@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 
+<style>
+    iframe
+    { width: 100%; }
+</style>
+
 <script>
     window.addEventListener("load", async function()
     { display_weather_data(await get_weather(), document.body) });
@@ -18,11 +23,19 @@
         return response
     } 
 
+    async function get_latlong(city="glasgow") 
+    {
+        let response = await fetch(`/data/latlong?c=${country}`)
+        response = await response.json()
+        return response
+    }
+
 
     async function display_weather_data(weather_data, parent_item)
     {   
         let ifram = parent_item.ownerDocument.createElement("iframe")
         ifram.setAttribute("src", "weather_data_template.html")
+
         parent_item.append(ifram)
         
         //TODO: make this work with the onload event instead so an arbitrary wait time is no longer needed

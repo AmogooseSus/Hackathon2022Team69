@@ -11,9 +11,27 @@ let weather_api_key = "5a1900c39d7e4c3fb71192249221102"
 router.get("/weather",async (req,res) => 
 {
     try {
-        let city = req.query.c
+        let city = req.query.c // get city from query that's comming from client
+
+        //call weather api with city
         let current_weather = `http://api.weatherapi.com/v1/current.json?key=${weather_api_key}&q=${city}`
-        let data = await fetch(current_weather)
+        let data = await fetch(current_weather) // call the actual API part 1
+        let json = await data.json() // call the actual API part 2
+        console.log(json) // turn to json
+        res.send(json) // send back to client
+    }
+    catch(e){
+        console.log("could not get data")
+        console.log(e)
+    }
+})
+
+router.get("/latlong",async (req,res) => 
+{
+    try {
+        let city = req.query.c
+        let latlongapistring = `http://latlongapi&city=${city}`
+        let data = await fetch(latlongapistring)
         let json = await data.json()
         console.log(json)
         res.send(json)
@@ -23,6 +41,7 @@ router.get("/weather",async (req,res) =>
         console.log(e)
     }
 })
+
 
 router.get("/headlines",async (req,res) => 
 {

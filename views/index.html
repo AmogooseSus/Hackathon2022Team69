@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<link type="text/css" rel="stylesheet" 
+link="/main.css" />
+<body>
+    
+
+</body>
+
+<script>
+
+    async function get_weather(lon,lat)
+    {
+        let response = await fetch(`/data/weather?lon=${lon},lat=${lat}`)
+        response = await response.json()
+        return response
+    }
+
+    async function get_headlines(country="us") 
+    {
+        let response = await fetch(`/data/headlines?c=${country}`)
+        response = await response.json()
+        return response
+    } 
+
+
+    async function get_friends() 
+    {
+        let response = await fetch("/data/friends")
+        response = await response.json()
+        return response
+    }
+
+
+</script>
+
+</html>

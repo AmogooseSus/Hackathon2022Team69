@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Globe</title>
+  </body>
+  <head>
+    <script src="./Main.mjs" type="module"></script>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 200 200"
+      width="200"
+      height="200"
+      id="LineSVG"
+    >
+      <line
+        x1="0"
+        y1="0"
+        x2="100"
+        y2="200"
+        stroke="#0000ff9f"
+        stroke-width="3"
+        id="Line"
+      />
+    </svg>
+    <div id="InfoPanel">
+      <div id="WeatherPanel" style="position: relative">
+        <h3 id="InfoCountry">Scotland</h3>
+        <h1 id="InfoCity">Glasgow</h1>
+        <div id="InfoProfile">
+          <img
+            style="filter: brightness(180%)"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAABSBJREFUaEPtmG2IVGUUx//nzqzry2zRh1Jig1WjEAoiKSshMvyQGQnJZAQ789y7ixCxWZIvJeEElmVW6kbB4D7PvbN+cJv8UPQiYWlQYllIQSUk1JZl9gbqbL7M3ufEnb0j6+rM3Ll3bBD2frz3nPP8f+ece87lEi7xiy5x/RgHaHYFxyswXoGIGbgoLZRKpa6LxWK3a6CdmJkN43CcaG9fX9+hiHrPc28ogBDiXgBrQXRrBaH7mGitI+WHjQJpCEBPT0/r8ePH3yDDMIMIIyBbKBR68vn8mSD21WwiAySTydiURGIHgEWjDjqlgY8NooPePWKepZnvJqLWsg1r/db06dOXZDIZHQUiMoAQ4mkQPXdWBNH24Xh8+bZs9shoYZZlXa2ZXwGwpHyfgBVKqY1NA+js7LwqFo8PApjoi9hsK/V4NUGmaW5m4DHfZmhCS0tHNpv9KyxEpAqYpvkUA8+XDmf+Zmho6OZ8Pu9WE+O13ORE4gABN5bcgFWOUhuaAiAs61Mwz/UBUrZt9wcRYppmmgHbt91jKzUviN+FbCJVQFjWP2C+wgusXbc9l8v9GkRId3d3+7Dr/jJSOD7q2Pa0IH6NBzDNYQAxL/BQodAadCx6Y/dEoXDKF3TKVmpScwBCVsA0zWsY+NkX/Yet1NTmAAjxCYjuLLUCUdqRMhdEyDnvANFHtpTzg/g1vIXSprmSgBejTCEQPWFLuakpAN3d3VOLxeIhMoyEJ4CALUqpZVXEkGmam8p7gJmPsdYzc7nc300B8A4VlrUCzKPn+IBBtFxK+dtoUd4mZuZXGXiwfJ+BZY5SW8KK95MWxb3k62V1+znCmE+TYexm1/2+ZBCLzWKt5435FtrmOE5qZJeFvyLtgfKx6XR6Jog+I6Jg04T5iBuPz+3fuvXH8NJHPCMBdHV1XetqvY61XkyGEa9HDGvt7ZC8bmlZEwUkFEAmkzEGBweXaeZ1RDR5jPCTINoL5sMg+t2fUNNA1A7mOwCMXVpDYF7T0dHRG+bTum4AIYT35bkNRItHCWfW+j2OxV4/eeLEnnw+f/JC1Ugmk5MmtbXdRcyPEHDf6A4g4M1EIpHq7e09XU8l6wLo7OycEovF3i8vLz+7nzPzo47jfFXPwel0ejYZxmsAbiv7EbC7UCgsrJSAqIuMhGUNgDnpB/Kyvqm1tXVVNpst1iO+bLt06dKWYrG4noHlZ6tBtN2W8uGg0ylwBc6b98yrbdse2cIRr7GxmehJR8qXg4QNBCCE6ADRd+UXkIGNjlIrghwQ1EYIsQFEpZjM/K923Vn9/f3lD76KYQIBpExzhwE84EXRzF9PnDDhlrBtU0lJJpOJ/zQ4uB/ATb7NgK3UQ7USUBPAsqwZrtY/EJHBzDpmGHOklF/WChzmufdig+gL7ywArjs8PKNWFWoCCCHWg2j1yNqjnbaUC8KIC+ojLOsDMN9TaiVgnaPUM9V8awKkhDhoEF1fCki0yJHynaBiwtilLet+Yn7b9/3WVuqG0ACmaV7JwNGRf1N8+rK2tsvrXTT1Qnij9UyxeMwfGEzAVKXUn5XiVK1AuqtrIWn9rl/O/Y5Slf551quzqr0QYh+I5pSMmBfYtr0zFIAQwgJRX6n9gQPMPNBQpRVVkbcsZ/vnWkopFRZgFYhe+F9EV4ZZaUv5UjgAy8qAeW2TAZ61pcyEArAsa74GQv8xaAS4AeySUu4KBdAIARc7Rs09cLEFRI0/DhA1g1H9xysQNYNR/S/5CvwHOfkPTzmJtj4AAAAASUVORK5CYII="
+          />
+          <div id="UserName">Harry's mum</div>
+        </div>
+        <img
+          id="WeatherIcon"
+          crossorigin="anonymous"
+          src="https://cdn.weatherapi.com/weather/128x128/day/296.png"
+        />
+        <br />
+        <h1 id="InfoTemperature">69°F</h1>
+        <div class="ImageTextContainer">
+          <h3 id="InfoWind">69 km/h</h3>
+          <img
+            style="width: 48px; height: 48px"
+            crossorigin="anonymous"
+            src="wind.png"
+          />
+        </div>
+        <div class="ImageTextContainer">
+          <h3 id="InfoRain">6.9 mL</h3>
+          <img
+            style="width: 48px; height: 48px"
+            crossorigin="anonymous"
+            src="rain.png"
+          />
+        </div>
+      </div>
+
+      <div id="NewsPanel" style="position: relative">
+        <h2 id="NewsHeader">Top headlines</h2>
+        <div class="NewsTitles">Harry's mum graduates from primary</div>
+        <div class="NewsTitles">Florida man breaks caterpillar</div>
+        <div class="NewsTitles">How to break your neck in 3 easy steps</div>
+      </div>
+    </div>
+    <img crossorigin="anonymous" src="mogus.png" id="Mogus" />
+    <div id="Sidebar" class="">
+      <div id="Header">
+        <div id="HeaderText" style="position: relative; width: 90%; left: 0">
+          Members
+        </div>
+        <div
+          id="HeaderArrow"
+          style="position: absolute; width: 10%; right: 0; top: 0"
+        >
+          ↓
+        </div>
+      </div>
+      <div id="MembersList"></div>
+    </div>
+  </head>
+</html>

@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap');
+
+:root {
+    --color-charcoal: #2a383f;
+    --color-pink: #db636f;
+    --color-light: #e8d3c3;
+    --color-mid: #bab2a7;
+}
+
+*{
+    font-family: "PT Sans", Helvetica, sans-serif;
+}
+
+body{
+    margin: 0;
+    overflow: hidden;
+}
+#LineSVG{
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+}
+#InfoPanel{
+    min-width: 450px;
+    min-height: 100px;
+    position: absolute;
+    z-index: 3;
+}
+#InfoPanel > div{
+    border-radius: 7px;
+    background: #5f5f5faf;
+    backdrop-filter: blur(3px);
+}
+#InfoPanel *{
+    cursor: move;
+
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+#InfoCountry{
+    padding-top: 17px;
+    margin: 0 17px 17px 17px;
+    color: #afafaf;
+}
+#InfoCity{
+    margin: 17px;
+    color: var(--color-pink);/*#db636f;*/
+    font-weight: 700;
+}
+#InfoProfile{
+    position: absolute;
+    top: 0px;
+    right: 10px;
+}
+#InfoProfile img{
+    float: left;
+}
+#InfoProfile div{
+    float: left;
+    margin: 14px;
+    color: #afafaf;
+}
+#WeatherIcon{
+    display: block;
+    margin: 0 auto;
+    width: 256px;
+    height: 256px;
+    opacity: 75%;
+}
+#InfoWind, #InfoRain{
+    margin: 15px;
+    color: #afafaf;
+}
+.ImageTextContainer{
+    position: relative;
+}
+.ImageTextContainer img{
+    margin: 0 15px 0 15px;
+}
+.ImageTextContainer h3{
+    margin: 15px;
+    left: 70px;
+    position: absolute;
+}
+#InfoTemperature{
+    position: absolute;
+    right: 10px;
+    color: var(--color-pink);
+    font-size: 50px;
+    margin: 30px;
+    font-weight: 700;
+}
+
+#NewsHeader{
+    padding: 17px;
+    margin: 7px 0 7px 0;
+    color: #afafaf;
+    position: relative;
+}
+#NewsHeader::before{ /*https://stackoverflow.com/a/40400169*/
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    bottom: 0px;
+    left: 10px;
+    border-bottom: 5px solid #7f7f7f9f;
+}
+.NewsTitles{
+    padding:10px 17px 10px 17px;
+    text-overflow: ellipsis;
+    color: #dfdfdf;
+    font-size: 20px;
+    max-width: 420px;
+}
+
+#Mogus{
+    position: absolute;
+    z-index: 2;
+    transform: scale(0.1) rotate(20deg) translate(-200px, 300px);
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+#Sidebar{
+    position: absolute;
+    z-index: 2;
+    background-color: #7f7f7f7f;
+    backdrop-filter: blur(4px);
+    /*right: 0px;*/
+    left: calc(100vw - max(25vw, 300px) - 16px);
+    min-width: calc(max(25vw, 300px));
+    padding: 5px;
+    border: solid 3px #7f7f7f9f;
+
+    font-size: calc(1vw + 10px);
+    color: #ffffffff;
+
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: move;
+}
+
+#Sidebar #Header *{
+    font-size: calc(1.1vw + 15px);
+}
+#Sidebar.Collapsed #HeaderText::after{
+    content: " (collapsed)";
+}
+#Header{
+    cursor: move;
+}
+#Sidebar.Collapsed > #Header + #MembersList{
+    display: none;
+}
+#MembersList{
+    margin-top: 10px;
+}
+#MembersList div{
+    position: relative;
+    /*border-top: solid 3px #7f7f7f9f;*/
+    padding: 3px 0 3px 4px;
+    margin: 10px -2px 0 -2px;
+    cursor: pointer;
+}
+#MembersList div.Selected{
+    background-color: hsla(30, 50%, 70%, 0.5);
+}
+#MembersList div:hover:not(.Selected){
+    background-color: hsla(30, 60%, 70%, 0.3);
+}
+#MembersList div:active:not(.Selected){
+    background-color: hsla(30, 50%, 50%, 0.4);
+}
+#MembersList div::before{ /*https://stackoverflow.com/a/40400169*/
+    content: "";
+    position: absolute;
+    top: -7px;
+    right: 0px;
+    bottom: 0;
+    left: 0px;
+    border-top: 3px solid #7f7f7f9f;
+}

@@ -1,0 +1,58 @@
+<html>
+    
+    <style>
+        form
+        { width: auto; }
+
+        .info
+        { border-style: solid; border-width: 1px;}
+    </style>
+
+    <fieldset disabled="disabled">
+        <Form id="main_form">
+        </Form>
+    </fieldset>
+
+    <script>
+
+        function populate(weather_data)
+        {
+            function add_property(parent, atribute_name, atribute_value, type="text")
+            {
+                parent.append(atribute_name)
+                let atribute_item = document.createElement("input")
+                atribute_item.setAttribute("type", type)
+                atribute_item.setAttribute("value", atribute_value)
+                parent.append(atribute_item)
+                parent.append(document.createElement("br"))
+            }
+
+            function create_border(item_id)
+            {
+                let border = document.createElement("div")
+                border.setAttribute("id", item_id)
+                border.setAttribute("class", "info")
+                return border
+            }
+
+            let form = document.getElementById("main_form")
+
+            form.append("Location info:")
+            form.append(document.createElement("br"))
+            loc_info = create_border("loc_info")
+            
+            add_property(loc_info, "location: ", `${weather_data["location"]["region"]}, ${weather_data["location"]["country"]}`)
+            add_property(loc_info, "local time: ", weather_data["location"]["localtime"])
+            form.append(loc_info)
+
+            form.append("Weather info:")
+            form.append(document.createElement("br"))
+            weat_info = create_border("weat_info")
+
+            add_property(weat_info, "current temp: ", `${weather_data["current"]["temp_c"]}*C (${weather_data["current"]["temp_f"]}*F)`)
+            form.append(weat_info)
+            
+        }
+    </script>
+
+</html>

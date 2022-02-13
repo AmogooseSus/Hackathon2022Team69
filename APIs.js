@@ -64,11 +64,19 @@ router.get("/friends",async (req,res) =>
 {
     try 
     {
-        users = [{"Name":"Test","Country":"uk","City":"Scotland"}]
+        users = [
+  {"City": "Glasgow", "Name": "Luka", "LatLon": [56., -3.]},
+  {"City": "Frankfurt", "Name": "Marcus", "LatLon": [50., 8.]},
+  {"City": "Athens", "Name": "Matthew", "LatLon": [38., 21.]},
+  {"City": "Salt Lake City", "Name": "Lincoln", "LatLon": [41., -110.]},
+  {"City": "Petropavlovsk", "Name": "Tom", "LatLon": [54., 162.]},
+  {"City": "Melbourne", "Name": "Paul", "LatLon": [-35, 160.]}
+]
         req.send(users)
     }
     catch 
     {
+        console.log("Failed to send users back to client")
 
     }
 })
